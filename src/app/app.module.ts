@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,6 +11,9 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { SignUpComponent } from './views/sign-up/sign-up.component';
 import { LogInComponent } from './views/log-in/log-in.component';
 import { AuthService } from './services/auth.service';
+import { UserService } from './services/user.service';
+import { ProfileComponent } from './views/profile/profile.component';
+import { TokenInterceptorService } from './services/token-interceptor.service';
 
 
 @NgModule({
@@ -19,7 +22,8 @@ import { AuthService } from './services/auth.service';
     HeaderComponent,
     FooterComponent,
     SignUpComponent,
-    LogInComponent
+    LogInComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +32,13 @@ import { AuthService } from './services/auth.service';
     FormsModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    UserService,
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:TokenInterceptorService,
+      multi:true
+    }
   ],
   bootstrap: [AppComponent]
 })

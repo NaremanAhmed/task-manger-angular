@@ -11,7 +11,7 @@
                             <form
                              class="mx-1 mx-md-4"
                              #contactForm='ngForm' 
-                             (ngSubmit)='signUP(contactForm.value); contactForm.reset()' 
+                             (ngSubmit)='signUP(contactForm.value)' 
                             >
 
                                 <div class="d-flex flex-row align-items-center mb-4">
@@ -48,11 +48,15 @@
                                          name="age"
                                          ngModel
                                          #age='ngModel'
+                                         (focus)='changeAge()'
                                         />
                                         <div class="errors d-flex justify-content-center" *ngIf="age.touched && age.invalid">
                                             <div *ngIf="age.errors?.['required']">
                                                 * age is required
                                             </div>
+                                        </div>
+                                        <div *ngIf="invalidAge && !age.errors?.['required'] " class="errors d-flex justify-content-center" >
+                                            *age must be more than 1
                                         </div>
                                     </div>
                                 </div>
@@ -110,7 +114,7 @@
 
                                 <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                                     <button
-                                     type="button" 
+                                     type="submit" 
                                      class="btn btn-primary btn-lg"
                                      [disabled]='contactForm.invalid'
                                     >
