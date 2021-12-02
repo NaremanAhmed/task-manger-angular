@@ -1,5 +1,24 @@
-<p>profile works!</p>
 <br>
 <h1>
     Welcome {{user.name}}
 </h1>
+
+<br><br>
+
+<div class="d-grid gap-2 d-md-flex justify-content-md-center">
+    <button
+     class="btn btn-outline-dark btn-lg"
+     type="button" 
+     routerLink="/task" 
+    >
+        Tasks
+    </button>
+    <button
+     class="btn btn-outline-success btn-lg" 
+     type="button" 
+     routerLink="/add/tasks" 
+    >
+        Add Tasks
+    </button>
+
+  </div>

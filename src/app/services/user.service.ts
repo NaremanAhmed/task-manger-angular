@@ -13,4 +13,8 @@ export class UserService {
   getProfile(){
     return this.http.get<Users>(this.url+'profile')
   }
+
+  updateProfile(user:Users){
+    return this.http.patch(this.url+'users/profile',user)
+  }
 }

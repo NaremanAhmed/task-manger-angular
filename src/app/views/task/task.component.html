@@ -1,0 +1,41 @@
+<br>
+<div class="d-flex justify-content-center">
+    <table class="table table-hover w-80">
+        <thead>
+            <tr>
+                <!-- <th scope="col">#</th> -->
+                <th scope="col">Description</th>
+                <th scope="col">Compleated</th>
+                <th scope="col">Delete</th>
+                <th scope="col">Update</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let task of task'>
+                <td>{{task.description}}</td>
+                <td>{{task.completed}}</td>
+                <td>
+                    <button type="button" class="btn btn-danger"
+                     (click)='deleteTasks(task)'
+                    >
+                        Delete
+                    </button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-warning"
+                     routerLink="/edit/tasks/{{task._id}}"
+                    >
+                        Update
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!--  -->
+<div class="d-grid gap-2 d-md-flex justify-content-md-center">
+    <button class="btn btn-outline-success btn-lg" type="button" routerLink="/add/tasks">
+        Add Tasks
+    </button>
+</div>

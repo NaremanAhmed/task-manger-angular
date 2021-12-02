@@ -14,6 +14,11 @@ import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 import { ProfileComponent } from './views/profile/profile.component';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { TaskComponent } from './views/task/task.component';
+import { AddtaskComponent } from './views/addtask/addtask.component';
+import { TaskService } from './services/task.service';
+import { UpdateTasksComponent } from './views/update-tasks/update-tasks.component';
+import { EditProfileComponent } from './views/edit-profile/edit-profile.component';
 
 
 @NgModule({
@@ -23,7 +28,11 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     FooterComponent,
     SignUpComponent,
     LogInComponent,
-    ProfileComponent
+    ProfileComponent,
+    TaskComponent,
+    AddtaskComponent,
+    UpdateTasksComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +43,7 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
   providers: [
     AuthService,
     UserService,
+    TaskService,
     {
       provide:HTTP_INTERCEPTORS,
       useClass:TokenInterceptorService,

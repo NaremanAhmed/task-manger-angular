@@ -1,0 +1,7 @@
+export interface Tasks{
+    _id?:any
+    description?:string
+    completed?:boolean
+    taskId?:number
+}
+
